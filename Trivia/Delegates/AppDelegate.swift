@@ -6,7 +6,7 @@ class AppDelegate: UIResponder {
 	private let rootCoordinator: RootCoordinator
 	
 	override init() {
-		let urlString = "https://opentdb.com" // ESB
+		let urlString = "https://opentdb.com"
 		let networkClient = DefaultNetworkClient(with: urlString)
 		let apiClient = DefaultAPIClient(networkClient: networkClient)
 		let repository = DefaultRepository(with: apiClient)

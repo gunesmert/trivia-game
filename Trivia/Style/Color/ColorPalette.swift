@@ -2,7 +2,7 @@ import UIKit
 
 public struct ColorPalette {
 	public struct Primary {
-		public static let buttonBackground = UIColor.black
+		public static let buttonBackground = UIColor.dolphin
 		
 		public struct Light {
 			public static let text = UIColor.white

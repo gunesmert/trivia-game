@@ -5,7 +5,10 @@ import RxCocoa
 final class RootCoordinator: Coordinator {
 	private var repository: Repository
 	
-	private var activeCoordinator: Coordinator?
+	private lazy var mainCoordinator: MainCoordinator = {
+		let coordinator = MainCoordinator(with: repository)
+		return coordinator
+	}()
 
 	lazy private(set) var viewController: UIViewController = {
 		return RootViewController()
@@ -14,6 +17,7 @@ final class RootCoordinator: Coordinator {
 	// MARK: - Initializers
 	init(with repository: Repository) {
 		self.repository = repository
+		addChildCoordinator(mainCoordinator)
 	}
 	
 	// MARK: - Coordination Methods

@@ -1,6 +1,9 @@
 import UIKit
+import RxSwift
 
 class BaseViewController: UIViewController {
+	lazy var disposeBag = DisposeBag()
+	
 	// MARK: - Initializers
 	required init?(coder aDecoder: NSCoder) {
 		preconditionFailure("init(coder:) has not been implemented")
