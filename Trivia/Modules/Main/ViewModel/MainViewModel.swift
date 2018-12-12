@@ -21,6 +21,7 @@ enum MainViewAction {
 protocol MainViewModel {
 	var inputs: MainViewModelInputs { get }
 	var outputs: MainViewModelOutputs { get }
+	var navigationBarProperties: NavigationBarProperties { get }
 }
 
 final class DefaultMainViewModel: MainViewModel {
@@ -28,8 +29,8 @@ final class DefaultMainViewModel: MainViewModel {
 	
 	var inputs: MainViewModelInputs { return self }
 	var outputs: MainViewModelOutputs { return self }
+	var navigationBarProperties: NavigationBarProperties { return self }
 	
-	private let repository: Repository
 	private var actionsInput = PublishSubject<[MainViewAction]>()
 	private var alertViewModelInput = PublishSubject<AlertControllerViewModel>()
 	
@@ -39,11 +40,6 @@ final class DefaultMainViewModel: MainViewModel {
 		didSet {
 			actionsInput.onNext(currentActions)
 		}
-	}
-	
-	// MARK: - Initializers
-	init(with repository: Repository) {
-		self.repository = repository
 	}
 }
 
@@ -95,4 +91,9 @@ enum DefaultMainViewModelDelegateAction {
 
 protocol DefaultMainViewModelDelegate: class {
 	func viewModel(_ viewModel: DefaultMainViewModel, didTrigger action: DefaultMainViewModelDelegateAction)
+}
+
+// MARK: - NavigationBarProperties
+extension DefaultMainViewModel: NavigationBarProperties {
+	var shouldShowNavigationBar: Bool { return false }
 }

@@ -48,6 +48,11 @@ final class MainViewController: BaseViewController {
 			)
 			.disposed(by: disposeBag)
 	}
+	
+	// MARK: - Navigation Bar
+	override var shouldShowNavigationBar: Bool {
+		return viewModel.navigationBarProperties.shouldShowNavigationBar
+	}
 }
 
 // MARK: - MainViewDelegate

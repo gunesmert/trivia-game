@@ -2,7 +2,10 @@ import UIKit
 
 public struct ColorPalette {
 	public struct Primary {
+		public static let tint = UIColor.dolphin
+		public static let navigationBarButtonTint = UIColor.turkishRose
 		public static let buttonBackground = UIColor.dolphin
+		public static let separator = UIColor.mandysPink
 		
 		public struct Light {
 			public static let text = UIColor.white
@@ -13,10 +16,6 @@ public struct ColorPalette {
 			public static let text = UIColor.black
 		}
 	}
-	
-//	public struct Secondary {
-//
-//	}
 }
 
 // MARK: - Private Colors
