@@ -36,9 +36,17 @@ final class DefaultGameViewModel: GameViewModel {
 	private var numberOfCorrectAnswers: Int = 0
 	private var currentActionButtonState: GameActionButtonState {
 		didSet {
+			switch currentActionButtonState {
+			case .displayAnswer:
+				shouldProcessAnyButtonActions = true
+			default:
+				break
+			}
+			
 			gameActionButtonStateInput.onNext(currentActionButtonState)
 		}
 	}
+	private var shouldProcessAnyButtonActions: Bool = true
 	private var countdownTimer: Timer?
 	
 	// MARK: - Initializers
@@ -46,8 +54,6 @@ final class DefaultGameViewModel: GameViewModel {
 		self.repository = repository
 		self.category = category
 		self.currentActionButtonState = GameActionButtonState.displayAnswer
-		
-		// TODO: Save category as last
 		
 		let fetchQuestions = questionsReloadInput.flatMap { category in
 			repository
@@ -84,19 +90,27 @@ final class DefaultGameViewModel: GameViewModel {
 			currentQuestionIndex = -1
 			displayNextQuestionIfPossible()
 		default:
-			break
+			displayError(bundle.responseCode.localizedDescription)
 		}
 	}
 	
 	private func displayError(_ message: String) {
-		// TODO: Proper error handling according to response code
+		let okTitle = NSLocalizedString("OK", comment: "")
+		let okAction = AlertControllerViewModel.Action(title: okTitle, style: UIAlertAction.Style.default) { }
+		
+		let title = NSLocalizedString("Uh oh", comment: "")
+		let model = AlertControllerViewModel(style: UIAlertController.Style.alert,
+											 title: title,
+											 message: message,
+											 items: [okAction])
+		
+		alertViewModelInput.onNext(model)
 	}
 	
 	private func displayNextQuestionIfPossible() {
 		currentQuestionIndex += 1
 		
 		guard currentQuestionIndex < questions.count else {
-			// TODO: Oyun bitti falan filan
 			displayResultsAndEndGame()
 			return
 		}
@@ -236,6 +250,8 @@ extension DefaultGameViewModel: GameViewModelInputs {
 	}
 	
 	func didSelectAnswer(at index: Int) {
+		guard shouldProcessAnyButtonActions else { return }
+		shouldProcessAnyButtonActions = false
 		selectAnswer(at: index)
 		
 		let question = questions[currentQuestionIndex]
@@ -257,6 +273,8 @@ extension DefaultGameViewModel: GameViewModelInputs {
 	}
 	
 	func actionButtonTapped() {
+		guard shouldProcessAnyButtonActions else { return }
+		shouldProcessAnyButtonActions = false
 		switch currentActionButtonState {
 		case .displayAnswer:
 			let question = questions[currentQuestionIndex]

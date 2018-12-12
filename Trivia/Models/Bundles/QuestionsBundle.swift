@@ -6,6 +6,17 @@ enum ResponseCode: Int, Codable {
 	case invalidParameter	= 2
 	case tokenNotFound		= 3
 	case tokenEmpty			= 4
+	
+	var localizedDescription: String {
+		switch self {
+		case .success:
+			return ""
+		case .noResults:
+			return NSLocalizedString("Unfortunately, we don't enough content to show you at the moment. Please try a different category.", comment: "")
+		case .invalidParameter, .tokenNotFound, .tokenEmpty:
+			return NSLocalizedString("There is a problem happened. Please try again later.", comment: "")
+		}
+	}
 }
 
 struct QuestionsBundle {

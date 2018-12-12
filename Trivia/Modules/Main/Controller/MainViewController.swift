@@ -35,7 +35,11 @@ final class MainViewController: BaseViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		bind(to: viewModel)
-		viewModel.inputs.viewDidEndLoading()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		viewModel.inputs.viewWillAppear()
 	}
 	
 	// MARK: - ViewModel

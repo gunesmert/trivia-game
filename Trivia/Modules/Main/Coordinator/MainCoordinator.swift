@@ -4,9 +4,10 @@ import RxCocoa
 
 final class MainCoordinator: Coordinator {
 	private let repository: Repository
+	private let categoryManager: CategoryManager = DefaultCategoryManager()
 	
 	private lazy var mainViewController: MainViewController = {
-		let viewModel = DefaultMainViewModel()
+		let viewModel = DefaultMainViewModel(with: categoryManager)
 		viewModel.delegate = self
 		return MainViewController(viewModel: viewModel)
 	}()
@@ -30,6 +31,9 @@ final class MainCoordinator: Coordinator {
 	}
 	
 	private func startGame(with category: Category? = nil) {
+		if let category = category {
+			categoryManager.updateLatestUsedCategory(category)
+		}
 		guard let navigationController = viewController as? BaseNavigationController else { return }
 		let viewModel = DefaultGameViewModel(with: repository, and: category)
 		viewModel.delegate = self

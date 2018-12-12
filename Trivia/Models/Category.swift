@@ -18,3 +18,13 @@ extension Category: Decodable {
 		description = try container.decode(String.self, forKey: .description)
 	}
 }
+
+// MARK: - Encodable
+extension Category: Encodable {
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		
+		try container.encode(identifier, forKey: .identifier)
+		try container.encode(description, forKey: .description)
+	}
+}

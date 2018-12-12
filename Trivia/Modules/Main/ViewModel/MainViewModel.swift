@@ -27,6 +27,8 @@ protocol MainViewModel {
 final class DefaultMainViewModel: MainViewModel {
 	weak var delegate: DefaultMainViewModelDelegate?
 	
+	private let categoryManager: CategoryManager
+	
 	var inputs: MainViewModelInputs { return self }
 	var outputs: MainViewModelOutputs { return self }
 	var navigationBarProperties: NavigationBarProperties { return self }
@@ -41,17 +43,27 @@ final class DefaultMainViewModel: MainViewModel {
 			actionsInput.onNext(currentActions)
 		}
 	}
+	
+	// MARK: - Initializers
+	init(with categoryManager: CategoryManager) {
+		self.categoryManager = categoryManager
+	}
 }
 
 // MARK: - MainViewModelInputs
 protocol MainViewModelInputs {
-	func viewDidEndLoading()
+	func viewWillAppear()
 	func didReceiveTapForAction(at index: Int)
 }
 
 extension DefaultMainViewModel: MainViewModelInputs {
-	func viewDidEndLoading() {
-		currentActions = [MainViewAction.chooseCategory, MainViewAction.playWithRandomQuestions]
+	func viewWillAppear() {
+		var actions = [MainViewAction.chooseCategory, MainViewAction.playWithRandomQuestions]
+		if let category = categoryManager.latestUsedCategory {
+			actions.append(MainViewAction.playWithLastCategory(category))
+		}
+		
+		currentActions = actions
 	}
 	
 	func didReceiveTapForAction(at index: Int) {
