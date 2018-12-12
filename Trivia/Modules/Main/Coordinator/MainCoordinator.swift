@@ -77,7 +77,6 @@ extension MainCoordinator: DefaultGameViewModelDelegate {
 		case .gameEnded:
 			guard let navigationController = viewController as? BaseNavigationController else { return }
 			navigationController.popToRootViewController(animated: true)
-			// TODO: Update Main View Model for last played category
 		}
 	}
 }

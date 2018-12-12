@@ -1,8 +1,6 @@
 import Foundation
 import RxSwift
 
-private var shouldShowLogs: Bool = true
-
 protocol NetworkClient {
 	var fetch: (APIEndpoint) -> Single<Data> { get }
 }
@@ -40,20 +38,9 @@ enum NetworkClientCommons {
 		data: Data)) -> Single<Data> {
 		let (response, data) = responseAndData
 		
-		if shouldShowLogs {
-			if let dataString = String(data: data, encoding: String.Encoding.utf8) {
-				print("DATA:\n\(dataString)\n")
-			}
-		}
-		
 		guard 200..<400 ~= response.statusCode else {
 			if response.statusCode == 401 {
 				return .error(NetworkClientError(type: .unauthorized))
-			}
-			
-			// TODO: Check this
-			if let message = String(data: data, encoding: String.Encoding.utf8) {
-				return .error(NetworkClientError(type: .errorMessage(message)))
 			}
 			
 			return .error(NetworkClientError(type: .invalidResponse(response, data)))
@@ -64,17 +51,9 @@ enum NetworkClientCommons {
 	
 	static func performRequest(with request: URLRequest) -> Single<(response: HTTPURLResponse, data: Data)> {
 		return Single<(response: HTTPURLResponse, data: Data)>.create { single in
-			if shouldShowLogs {
-				print("\nREQUEST:\n\(String(describing: request))\n")
-			}
-			
 			let task = URLSession.shared.dataTask(with: request) { (data: Data?,
 				response: URLResponse?,
 				error: Error?) in
-				if shouldShowLogs {
-					print("RESPONSE:\n\(String(describing: response))\n")
-				}
-				
 				if let error = error {
 					let errorCode = (error as NSError).code
 					

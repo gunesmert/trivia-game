@@ -124,8 +124,15 @@ final class DefaultGameViewModel: GameViewModel {
 			let realQuestionIndex = currentQuestionIndex + 1
 			let questionNumberText = String(format: NSLocalizedString("Question %d / %d", comment: ""), realQuestionIndex, questions.count)
 			
+			var questionSentenceParts = [String]()
+			if category == nil {
+				let category = String(format: NSLocalizedString("Category: %@", comment: ""), question.categoryDescription)
+				questionSentenceParts.append(category)
+			}
+			questionSentenceParts.append(question.questionSentence)
+			
 			let state = GameComponentsViewState.newQuestion(questionNumberText,
-															question.questionSentence,
+															questionSentenceParts.joined(separator: "\n"),
 															currentShuffledAnswers)
 			gameComponentsViewStateInput.onNext(state)
 		}
