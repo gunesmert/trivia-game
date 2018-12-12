@@ -153,10 +153,10 @@
 		0DF4C6AB21C10618007262ED /* Trivia */ = {
 			isa = PBXGroup;
 			children = (
-				0DF4C75E21C1931A007262ED /* Managers */,
 				0DF4C71F21C12638007262ED /* Components */,
 				0DF4C6CC21C1093B007262ED /* Delegates */,
 				0DF4C70721C11272007262ED /* Extensions */,
+				0DF4C75E21C1931A007262ED /* Managers */,
 				0DF4C6D221C109A6007262ED /* Models */,
 				0DF4C6D321C109AD007262ED /* Modules */,
 				0DF4C6D421C10A2B007262ED /* Protocols */,
@@ -249,8 +249,8 @@
 			children = (
 				0DF4C71321C1184A007262ED /* AlertControllerViewModel.swift */,
 				0DF4C6D521C10A48007262ED /* Coordinator.swift */,
-				0DF4C73C21C134CF007262ED /* StaticallyIdentifiable.swift */,
 				0DF4C74121C139DE007262ED /* NavigationBarProperties.swift */,
+				0DF4C73C21C134CF007262ED /* StaticallyIdentifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
