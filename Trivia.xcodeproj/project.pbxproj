@@ -56,6 +56,7 @@
 		0DF4C75721C14D05007262ED /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75621C14D05007262ED /* GameView.swift */; };
 		0DF4C75921C1533F007262ED /* GameComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75821C1533F007262ED /* GameComponentsView.swift */; };
 		0DF4C75B21C15EC3007262ED /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75A21C15EC3007262ED /* AnswerButton.swift */; };
+		0DF4C75D21C1738F007262ED /* GameActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75C21C1738F007262ED /* GameActionButton.swift */; };
 		4528CCD886B9EB36479B6A6E /* Pods_Trivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76DA8CA015C98202AA209A6C /* Pods_Trivia.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		0DF4C75621C14D05007262ED /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		0DF4C75821C1533F007262ED /* GameComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponentsView.swift; sourceTree = "<group>"; };
 		0DF4C75A21C15EC3007262ED /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
+		0DF4C75C21C1738F007262ED /* GameActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionButton.swift; sourceTree = "<group>"; };
 		76DA8CA015C98202AA209A6C /* Pods_Trivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEB82918D141EDB2D2935CB /* Pods-Trivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.release.xcconfig"; sourceTree = "<group>"; };
 		A48A287CC69B313FBBCB5569 /* Pods-Trivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.debug.xcconfig"; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 		0DF4C75121C14727007262ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0DF4C75C21C1738F007262ED /* GameActionButton.swift */,
 				0DF4C75821C1533F007262ED /* GameComponentsView.swift */,
 				0DF4C75621C14D05007262ED /* GameView.swift */,
 			);
@@ -686,6 +689,7 @@
 				0DF4C75B21C15EC3007262ED /* AnswerButton.swift in Sources */,
 				0DF4C75921C1533F007262ED /* GameComponentsView.swift in Sources */,
 				0DF4C75321C14746007262ED /* GameViewModel.swift in Sources */,
+				0DF4C75D21C1738F007262ED /* GameActionButton.swift in Sources */,
 				0DF4C70B21C1147A007262ED /* UIViewExtensions.swift in Sources */,
 				0DF4C74C21C144F4007262ED /* Question.swift in Sources */,
 				0DF4C71C21C120CE007262ED /* MainView.swift in Sources */,

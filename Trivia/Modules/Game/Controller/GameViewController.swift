@@ -64,6 +64,15 @@ final class GameViewController: BaseViewController {
 				}
 			)
 			.disposed(by: disposeBag)
+		
+		viewModel.outputs.gameActionButtonState
+			.observeOn(MainScheduler.instance)
+			.subscribe(
+				onNext: { [weak self] state in
+					self?.gameComponentsView.gameView.actionButton.buttonState = state
+				}
+			)
+			.disposed(by: disposeBag)
 	}
 	
 	// MARK: - Navigation Bar
@@ -95,6 +104,8 @@ extension GameViewController: GameViewDelegate {
 		switch action {
 		case .didReceiveTap(let index):
 			viewModel.inputs.didSelectAnswer(at: index)
+		case .didReceiveTapOnActionButton:
+			viewModel.inputs.actionButtonTapped()
 		}
 	}
 }

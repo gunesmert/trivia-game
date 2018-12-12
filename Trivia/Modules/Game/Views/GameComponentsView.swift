@@ -4,9 +4,9 @@ import SnapKit
 enum GameComponentsViewState {
 	case loading
 	case newQuestion(String, String, [String]) // questionNumber, questionSentence, answers
-	case selectedAnswer(Int)
-	case highlightAnswer(Int, Int) // selectedIndex, correctAnswerIndex
-	case gameFinished
+	case selectedAnswer(Int) // selectedAnswerIndex
+	case highlightAnswer(Int, Int) // selectedAnswerIndex, correctAnswerIndex
+	case displayCorrectAnswer(Int) // correctAnswerIndex
 }
 
 final class GameComponentsView: UIView {
@@ -73,11 +73,11 @@ final class GameComponentsView: UIView {
 			gameView.updateInterface(with: answers)
 			gameView.isHidden = false
 		case .selectedAnswer(let selectedAnswerIndex):
-			gameView.updateInterface(with: selectedAnswerIndex)
-		case .highlightAnswer(let selectedAnswerIndex, let currentAnswerIndex):
-			gameView.updateInterface(with: selectedAnswerIndex, and: currentAnswerIndex)
-		case .gameFinished:
-			break
+			gameView.updateInterfaceWithSelectedAnswerIndex(selectedAnswerIndex)
+		case .highlightAnswer(let selectedAnswerIndex, let correctAnswerIndex):
+			gameView.updateInterface(with: selectedAnswerIndex, and: correctAnswerIndex)
+		case .displayCorrectAnswer(let correctAnswerIndex):
+			gameView.updateInterfaceWithCorrectAnswerIndex(correctAnswerIndex)
 		}
 	}
 }

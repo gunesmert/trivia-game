@@ -23,6 +23,7 @@ final class GameView: UIView {
 		label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
 		label.textColor = ColorPalette.Primary.Light.text
 		label.textAlignment = NSTextAlignment.center
+		label.adjustsFontSizeToFitWidth = true
 		label.numberOfLines = 0
 		
 		label.setContentHuggingPriority(UILayoutPriority.defaultLow,
@@ -41,6 +42,14 @@ final class GameView: UIView {
 		return stackView
 	}()
 	
+	lazy var actionButton: GameActionButton = {
+		let button = GameActionButton()
+		button.addTarget(self,
+						 action: #selector(actionButtonTapped(_:)),
+						 for: UIControl.Event.touchUpInside)
+		return button
+	}()
+	
 	// MARK: - Initializers
 	required init?(coder aDecoder: NSCoder) {
 		preconditionFailure("init(coder:) has not been implemented")
@@ -50,9 +59,16 @@ final class GameView: UIView {
 		super.init(frame: frame)
 		backgroundColor = ColorPalette.Primary.Light.background
 		
+		addSubview(actionButton)
+		actionButton.snp.makeConstraints { make in
+			make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(Constants.defaultMargin)
+			make.leading.trailing.equalToSuperview().inset(Constants.defaultMargin * 2)
+			make.height.equalTo(Constants.minimumDimension)
+		}
+		
 		addSubview(answersStackView)
 		answersStackView.snp.makeConstraints { make in
-			make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(Constants.defaultMargin * 2)
+			make.bottom.equalTo(actionButton.snp.top).offset(-Constants.defaultMargin * 2)
 			make.leading.trailing.equalToSuperview().inset(Constants.defaultMargin * 2)
 			make.height.equalTo(0.0)
 		}
@@ -97,9 +113,9 @@ final class GameView: UIView {
 		}
 	}
 	
-	func updateInterface(with selectedAnswerIndex: Int) {
+	func updateInterfaceWithSelectedAnswerIndex(_ index: Int) {
 		guard let buttons = answersStackView.arrangedSubviews as? [AnswerButton] else { return }
-		buttons[selectedAnswerIndex].buttonState = AnswerButtonState.selected
+		buttons[index].buttonState = AnswerButtonState.selected
 	}
 	
 	func updateInterface(with selectedAnswerIndex: Int, and correctAnswerIndex: Int) {
@@ -115,6 +131,11 @@ final class GameView: UIView {
 		}
 	}
 	
+	func updateInterfaceWithCorrectAnswerIndex(_ index: Int) {
+		guard let buttons = answersStackView.arrangedSubviews as? [AnswerButton] else { return }
+		buttons[index].buttonState = AnswerButtonState.correct
+	}
+	
 	// MARK: - Helper Methods
 	private func index(of answerButton: AnswerButton) -> Int? {
 		guard let buttons = answersStackView.arrangedSubviews as? [AnswerButton] else { return nil }
@@ -128,10 +149,16 @@ final class GameView: UIView {
 		let action = GameViewDelegateAction.didReceiveTap(index)
 		delegate?.gameView(self, didTrigger: action)
 	}
+	
+	@objc func actionButtonTapped(_ answerButton: AnswerButton) {
+		let action = GameViewDelegateAction.didReceiveTapOnActionButton
+		delegate?.gameView(self, didTrigger: action)
+	}
 }
 
 enum GameViewDelegateAction {
 	case didReceiveTap(Int)
+	case didReceiveTapOnActionButton
 }
 
 // MARK: - MainViewDelegate

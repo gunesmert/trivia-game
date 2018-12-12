@@ -19,6 +19,7 @@ final class DefaultGameViewModel: GameViewModel {
 	private var alertViewModelInput = PublishSubject<AlertControllerViewModel>()
 	private var navigationTitleInput = BehaviorSubject<String?>(value: nil)
 	private var gameComponentsViewStateInput = PublishSubject<GameComponentsViewState>()
+	private var gameActionButtonStateInput = PublishSubject<GameActionButtonState>()
 	
 	private let questionsBundle: Observable<QuestionsBundle>
 	private let error: Observable<Error>
@@ -33,11 +34,18 @@ final class DefaultGameViewModel: GameViewModel {
 	private var currentQuestionIndex: Int = -1
 	private var currentShuffledAnswers: [String] = []
 	private var numberOfCorrectAnswers: Int = 0
+	private var currentActionButtonState: GameActionButtonState {
+		didSet {
+			gameActionButtonStateInput.onNext(currentActionButtonState)
+		}
+	}
+	private var countdownTimer: Timer?
 	
 	// MARK: - Initializers
 	init(with repository: Repository, and category: Category? = nil) {
 		self.repository = repository
 		self.category = category
+		self.currentActionButtonState = GameActionButtonState.displayAnswer
 		
 		// TODO: Save category as last
 		
@@ -93,16 +101,46 @@ final class DefaultGameViewModel: GameViewModel {
 			return
 		}
 		
-		let question = questions[currentQuestionIndex]
-		currentShuffledAnswers = question.shuffledAnswers()
+		func displayNextQuestion() {
+			currentActionButtonState = GameActionButtonState.displayAnswer
+			
+			let question = questions[currentQuestionIndex]
+			currentShuffledAnswers = question.shuffledAnswers()
+			
+			let realQuestionIndex = currentQuestionIndex + 1
+			let questionNumberText = String(format: NSLocalizedString("Question %d / %d", comment: ""), realQuestionIndex, questions.count)
+			
+			let state = GameComponentsViewState.newQuestion(questionNumberText,
+															question.questionSentence,
+															currentShuffledAnswers)
+			gameComponentsViewStateInput.onNext(state)
+		}
 		
-		let realQuestionIndex = currentQuestionIndex + 1
-		let questionNumberText = String(format: NSLocalizedString("Question %d / %d", comment: ""), realQuestionIndex, questions.count)
+		if currentQuestionIndex == 0 {
+			displayNextQuestion()
+		} else {
+			performCountdownFor(3) {
+				displayNextQuestion()
+			}
+		}
+	}
+	
+	private func performCountdownFor(_ seconds: Int, _ completion: @escaping () -> Void) {
+		var count: Int = 0
 		
-		let state = GameComponentsViewState.newQuestion(questionNumberText,
-														question.questionSentence,
-														currentShuffledAnswers)
-		gameComponentsViewStateInput.onNext(state)
+		currentActionButtonState = GameActionButtonState.nextQuestionIn(seconds)
+		
+		self.countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+			count += 1
+			
+			if count == seconds {
+				self.countdownTimer?.invalidate()
+				self.countdownTimer = nil
+				completion()
+			} else {
+				self.currentActionButtonState = GameActionButtonState.nextQuestionIn(seconds - count)
+			}
+		}
 	}
 	
 	private func selectAnswer(at index: Int) {
@@ -114,12 +152,14 @@ final class DefaultGameViewModel: GameViewModel {
 		let state = GameComponentsViewState.highlightAnswer(selectedIndex, index)
 		gameComponentsViewStateInput.onNext(state)
 		
-		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
 			self.displayNextQuestionIfPossible()
 		}
 	}
 	
 	private func displayResultsAndEndGame() {
+		currentActionButtonState = GameActionButtonState.gameFinished
+		
 		let noTitle = NSLocalizedString("No", comment: "")
 		let noAction = AlertControllerViewModel.Action(title: noTitle, style: UIAlertAction.Style.default) {
 			self.endGame()
@@ -131,7 +171,7 @@ final class DefaultGameViewModel: GameViewModel {
 		}
 		
 		let title = NSLocalizedString("Congratulations", comment: "")
-		let message = String(format: NSLocalizedString("You have completed the game with %d correct answers. Would you like to play again?", comment: ""), numberOfCorrectAnswers)
+		let message = String(format: NSLocalizedString("You have completed the game with %d correct answers. Here is a 🥔. Would you like to play again?", comment: ""), numberOfCorrectAnswers)
 		let model = AlertControllerViewModel(style: UIAlertController.Style.alert,
 											 title: title,
 											 message: message,
@@ -152,6 +192,7 @@ final class DefaultGameViewModel: GameViewModel {
 		numberOfCorrectAnswers = 0
 		
 		gameComponentsViewStateInput.onNext(GameComponentsViewState.loading)
+		currentActionButtonState = GameActionButtonState.displayAnswer
 		questionsReloadInput.onNext(category)
 	}
 }
@@ -161,6 +202,7 @@ protocol GameViewModelInputs {
 	func viewDidEndLoading()
 	func crossButtonTapped()
 	func didSelectAnswer(at index: Int)
+	func actionButtonTapped()
 }
 
 extension DefaultGameViewModel: GameViewModelInputs {
@@ -204,7 +246,29 @@ extension DefaultGameViewModel: GameViewModelInputs {
 		}
 		
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+			if correctAnswerIndex == index {
+				self.currentActionButtonState = GameActionButtonState.correctAnswer
+			} else {
+				self.currentActionButtonState = GameActionButtonState.incorrectAnswer
+			}
+			
 			self.highlightCorrectAnswer(at: correctAnswerIndex, selectedIndex: index)
+		}
+	}
+	
+	func actionButtonTapped() {
+		switch currentActionButtonState {
+		case .displayAnswer:
+			let question = questions[currentQuestionIndex]
+			guard let correctAnswerIndex = currentShuffledAnswers.index(of: question.correctAnswer) else { return }
+			
+			gameComponentsViewStateInput.onNext(GameComponentsViewState.displayCorrectAnswer(correctAnswerIndex))
+			
+			DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
+				self.displayNextQuestionIfPossible()
+			}
+		default:
+			break
 		}
 	}
 }
@@ -215,6 +279,7 @@ protocol GameViewModelOutputs {
 	var alertViewModel: Observable<AlertControllerViewModel> { get }
 	var navigationTitle: Observable<String?> { get }
 	var gameComponentsViewState: Observable<GameComponentsViewState> { get }
+	var gameActionButtonState: Observable<GameActionButtonState> { get }
 }
 
 extension DefaultGameViewModel: GameViewModelOutputs {
@@ -223,6 +288,9 @@ extension DefaultGameViewModel: GameViewModelOutputs {
 	var navigationTitle: Observable<String?> { return navigationTitleInput.asObservable() }
 	var gameComponentsViewState: Observable<GameComponentsViewState> {
 		return gameComponentsViewStateInput.asObservable()
+	}
+	var gameActionButtonState: Observable<GameActionButtonState> {
+		return gameActionButtonStateInput.asObservable()
 	}
 }
 

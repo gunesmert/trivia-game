@@ -23,6 +23,14 @@ public struct ColorPalette {
 		public static let correct = UIColor.lightForestGreen
 		public static let incorrect = UIColor.alizarinCrimson
 	}
+	
+	public struct GameAction {
+		public static let displayAnswer = UIColor.mandysPink
+		public static let nextQuestion = UIColor.matisse
+		public static let correctAnswer = UIColor.lightForestGreen
+		public static let incorrectAnswer = UIColor.alizarinCrimson
+		public static let gameFinished = UIColor.mandysPink
+	}
 }
 
 // MARK: - Private Colors
