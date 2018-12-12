@@ -10,23 +10,23 @@
 		0DF4C6AD21C10618007262ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6AC21C10618007262ED /* AppDelegate.swift */; };
 		0DF4C6B421C10619007262ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DF4C6B321C10619007262ED /* Assets.xcassets */; };
 		0DF4C6B721C10619007262ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF4C6B521C10619007262ED /* LaunchScreen.storyboard */; };
-		0DF4C6C221C10619007262ED /* TriviaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6C121C10619007262ED /* TriviaTests.swift */; };
 		0DF4C6D621C10A48007262ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6D521C10A48007262ED /* Coordinator.swift */; };
 		0DF4C6D921C10A6F007262ED /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6D821C10A6F007262ED /* BaseViewController.swift */; };
 		0DF4C6DD21C10B86007262ED /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6DC21C10B86007262ED /* ColorPalette.swift */; };
 		0DF4C6E221C10DCB007262ED /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6E121C10DCB007262ED /* RootCoordinator.swift */; };
+		0DF4C6E421C10EB1007262ED /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6E321C10EB1007262ED /* RootViewController.swift */; };
+		0DF4C6F521C10F68007262ED /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6F421C10F68007262ED /* NetworkClient.swift */; };
+		0DF4C6F721C10F83007262ED /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6F621C10F83007262ED /* APIClient.swift */; };
+		0DF4C6F921C11048007262ED /* NetworkClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6F821C11048007262ED /* NetworkClientError.swift */; };
+		0DF4C6FB21C11096007262ED /* NetworkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6FA21C11096007262ED /* NetworkHelpers.swift */; };
+		0DF4C6FD21C110B2007262ED /* APIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6FC21C110B2007262ED /* APIAdapter.swift */; };
+		0DF4C6FF21C11120007262ED /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C6FE21C11120007262ED /* APIEndpoint.swift */; };
+		0DF4C70121C11139007262ED /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C70021C11139007262ED /* Repository.swift */; };
+		0DF4C70321C1115F007262ED /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C70221C1115F007262ED /* Category.swift */; };
+		0DF4C70621C111EA007262ED /* CategoriesBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C70521C111EA007262ED /* CategoriesBundle.swift */; };
+		0DF4C70921C11283007262ED /* JSONDecoderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C70821C11283007262ED /* JSONDecoderExtensions.swift */; };
 		4528CCD886B9EB36479B6A6E /* Pods_Trivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76DA8CA015C98202AA209A6C /* Pods_Trivia.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0DF4C6BE21C10619007262ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0DF4C6A121C10618007262ED /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0DF4C6A821C10618007262ED;
-			remoteInfo = Trivia;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0DF4C6A921C10618007262ED /* Trivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,13 +34,21 @@
 		0DF4C6B321C10619007262ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DF4C6B621C10619007262ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DF4C6B821C10619007262ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0DF4C6BD21C10619007262ED /* TriviaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TriviaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DF4C6C121C10619007262ED /* TriviaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaTests.swift; sourceTree = "<group>"; };
-		0DF4C6C321C10619007262ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DF4C6D521C10A48007262ED /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0DF4C6D821C10A6F007262ED /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0DF4C6DC21C10B86007262ED /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		0DF4C6E121C10DCB007262ED /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		0DF4C6E321C10EB1007262ED /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		0DF4C6F421C10F68007262ED /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		0DF4C6F621C10F83007262ED /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		0DF4C6F821C11048007262ED /* NetworkClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientError.swift; sourceTree = "<group>"; };
+		0DF4C6FA21C11096007262ED /* NetworkHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelpers.swift; sourceTree = "<group>"; };
+		0DF4C6FC21C110B2007262ED /* APIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAdapter.swift; sourceTree = "<group>"; };
+		0DF4C6FE21C11120007262ED /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		0DF4C70021C11139007262ED /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		0DF4C70221C1115F007262ED /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0DF4C70521C111EA007262ED /* CategoriesBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesBundle.swift; sourceTree = "<group>"; };
+		0DF4C70821C11283007262ED /* JSONDecoderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderExtensions.swift; sourceTree = "<group>"; };
 		76DA8CA015C98202AA209A6C /* Pods_Trivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEB82918D141EDB2D2935CB /* Pods-Trivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.release.xcconfig"; sourceTree = "<group>"; };
 		A48A287CC69B313FBBCB5569 /* Pods-Trivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.debug.xcconfig"; sourceTree = "<group>"; };
@@ -55,13 +63,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0DF4C6BA21C10619007262ED /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -69,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				0DF4C6AB21C10618007262ED /* Trivia */,
-				0DF4C6C021C10619007262ED /* TriviaTests */,
 				0DF4C6AA21C10618007262ED /* Products */,
 				1CA55DF40398A043E3927199 /* Pods */,
 				5CBFD3B0F7B145104ADB4AC0 /* Frameworks */,
@@ -80,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				0DF4C6A921C10618007262ED /* Trivia.app */,
-				0DF4C6BD21C10619007262ED /* TriviaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +87,7 @@
 		0DF4C6AB21C10618007262ED /* Trivia */ = {
 			isa = PBXGroup;
 			children = (
+				0DF4C70721C11272007262ED /* Extensions */,
 				0DF4C6CC21C1093B007262ED /* Delegates */,
 				0DF4C6D221C109A6007262ED /* Models */,
 				0DF4C6D321C109AD007262ED /* Modules */,
@@ -98,15 +98,6 @@
 				0DF4C6D121C10973007262ED /* Support */,
 			);
 			path = Trivia;
-			sourceTree = "<group>";
-		};
-		0DF4C6C021C10619007262ED /* TriviaTests */ = {
-			isa = PBXGroup;
-			children = (
-				0DF4C6C121C10619007262ED /* TriviaTests.swift */,
-				0DF4C6C321C10619007262ED /* Info.plist */,
-			);
-			path = TriviaTests;
 			sourceTree = "<group>";
 		};
 		0DF4C6CC21C1093B007262ED /* Delegates */ = {
@@ -129,6 +120,11 @@
 		0DF4C6CE21C10956007262ED /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0DF4C6EF21C10F2A007262ED /* Client */,
+				0DF4C6F021C10F34007262ED /* Error */,
+				0DF4C6F121C10F3A007262ED /* Helpers */,
+				0DF4C6F221C10F47007262ED /* Protocols */,
+				0DF4C6F321C10F4E007262ED /* Repository */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -160,6 +156,8 @@
 		0DF4C6D221C109A6007262ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0DF4C70421C111DE007262ED /* Bundles */,
+				0DF4C70221C1115F007262ED /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,8 +223,67 @@
 		0DF4C6E021C10CB6007262ED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0DF4C6E321C10EB1007262ED /* RootViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0DF4C6EF21C10F2A007262ED /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C6F621C10F83007262ED /* APIClient.swift */,
+				0DF4C6F421C10F68007262ED /* NetworkClient.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		0DF4C6F021C10F34007262ED /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C6F821C11048007262ED /* NetworkClientError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		0DF4C6F121C10F3A007262ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C6FA21C11096007262ED /* NetworkHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0DF4C6F221C10F47007262ED /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C6FC21C110B2007262ED /* APIAdapter.swift */,
+				0DF4C6FE21C11120007262ED /* APIEndpoint.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0DF4C6F321C10F4E007262ED /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C70021C11139007262ED /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		0DF4C70421C111DE007262ED /* Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C70521C111EA007262ED /* CategoriesBundle.swift */,
+			);
+			path = Bundles;
+			sourceTree = "<group>";
+		};
+		0DF4C70721C11272007262ED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C70821C11283007262ED /* JSONDecoderExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1CA55DF40398A043E3927199 /* Pods */ = {
@@ -268,24 +325,6 @@
 			productReference = 0DF4C6A921C10618007262ED /* Trivia.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0DF4C6BC21C10619007262ED /* TriviaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0DF4C6C921C10619007262ED /* Build configuration list for PBXNativeTarget "TriviaTests" */;
-			buildPhases = (
-				0DF4C6B921C10619007262ED /* Sources */,
-				0DF4C6BA21C10619007262ED /* Frameworks */,
-				0DF4C6BB21C10619007262ED /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0DF4C6BF21C10619007262ED /* PBXTargetDependency */,
-			);
-			name = TriviaTests;
-			productName = TriviaTests;
-			productReference = 0DF4C6BD21C10619007262ED /* TriviaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -298,10 +337,6 @@
 				TargetAttributes = {
 					0DF4C6A821C10618007262ED = {
 						CreatedOnToolsVersion = 10.1;
-					};
-					0DF4C6BC21C10619007262ED = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 0DF4C6A821C10618007262ED;
 					};
 				};
 			};
@@ -319,7 +354,6 @@
 			projectRoot = "";
 			targets = (
 				0DF4C6A821C10618007262ED /* Trivia */,
-				0DF4C6BC21C10619007262ED /* TriviaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,13 +365,6 @@
 			files = (
 				0DF4C6B721C10619007262ED /* LaunchScreen.storyboard in Resources */,
 				0DF4C6B421C10619007262ED /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0DF4C6BB21C10619007262ED /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,31 +428,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF4C6F721C10F83007262ED /* APIClient.swift in Sources */,
 				0DF4C6D621C10A48007262ED /* Coordinator.swift in Sources */,
 				0DF4C6AD21C10618007262ED /* AppDelegate.swift in Sources */,
+				0DF4C70121C11139007262ED /* Repository.swift in Sources */,
+				0DF4C6E421C10EB1007262ED /* RootViewController.swift in Sources */,
+				0DF4C6FD21C110B2007262ED /* APIAdapter.swift in Sources */,
+				0DF4C70921C11283007262ED /* JSONDecoderExtensions.swift in Sources */,
+				0DF4C6F921C11048007262ED /* NetworkClientError.swift in Sources */,
 				0DF4C6E221C10DCB007262ED /* RootCoordinator.swift in Sources */,
+				0DF4C6FF21C11120007262ED /* APIEndpoint.swift in Sources */,
+				0DF4C6F521C10F68007262ED /* NetworkClient.swift in Sources */,
+				0DF4C70621C111EA007262ED /* CategoriesBundle.swift in Sources */,
 				0DF4C6D921C10A6F007262ED /* BaseViewController.swift in Sources */,
+				0DF4C6FB21C11096007262ED /* NetworkHelpers.swift in Sources */,
 				0DF4C6DD21C10B86007262ED /* ColorPalette.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0DF4C6B921C10619007262ED /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0DF4C6C221C10619007262ED /* TriviaTests.swift in Sources */,
+				0DF4C70321C1115F007262ED /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0DF4C6BF21C10619007262ED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0DF4C6A821C10618007262ED /* Trivia */;
-			targetProxy = 0DF4C6BE21C10619007262ED /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0DF4C6B521C10619007262ED /* LaunchScreen.storyboard */ = {
@@ -595,48 +617,6 @@
 			};
 			name = Release;
 		};
-		0DF4C6CA21C10619007262ED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6K2WVN974;
-				INFOPLIST_FILE = TriviaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ikea-challenge.TriviaTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trivia.app/Trivia";
-			};
-			name = Debug;
-		};
-		0DF4C6CB21C10619007262ED /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6K2WVN974;
-				INFOPLIST_FILE = TriviaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ikea-challenge.TriviaTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trivia.app/Trivia";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -654,15 +634,6 @@
 			buildConfigurations = (
 				0DF4C6C721C10619007262ED /* Debug */,
 				0DF4C6C821C10619007262ED /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0DF4C6C921C10619007262ED /* Build configuration list for PBXNativeTarget "TriviaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0DF4C6CA21C10619007262ED /* Debug */,
-				0DF4C6CB21C10619007262ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
