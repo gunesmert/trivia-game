@@ -31,7 +31,7 @@ final class BaseComponentsView: UIView {
 		return view
 	}()
 	
-	private lazy var emptyStateView: EmptyStateView = {
+	lazy var emptyStateView: EmptyStateView = {
 		let view = EmptyStateView()
 		view.backgroundColor = ColorPalette.Primary.Light.background
 		view.isHidden = true

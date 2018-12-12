@@ -32,6 +32,8 @@ extension EmptyStateMode: Equatable {
 }
 
 final class EmptyStateView: UIView {
+	weak var delegate: EmptyStateViewDelegate?
+	
 	private lazy var informationLabel: InsetLabel = {
 		let label = InsetLabel()
 		label.insets = UIEdgeInsets(top: Constants.defaultMargin,
@@ -42,6 +44,7 @@ final class EmptyStateView: UIView {
 		label.textColor = ColorPalette.Primary.Light.text
 		label.textAlignment = NSTextAlignment.center
 		label.numberOfLines = 0
+		
 		return label
 	}()
 	
@@ -76,10 +79,24 @@ final class EmptyStateView: UIView {
 		}
 		
 		contentView.addArrangedSubview(informationLabel)
+		
+		let selector = #selector(didReceiveTap(_:))
+		let recognizer = UITapGestureRecognizer(target: self, action: selector)
+		addGestureRecognizer(recognizer)
 	}
 	
 	// MARK: - Interface
 	private func updateInterface() {
 		informationLabel.text = mode.information
 	}
+	
+	// MARK: - Gesture
+	@objc private func didReceiveTap(_ sender: Any) {
+		delegate?.emptyStateViewDidReceiveTap(self)
+	}
+}
+
+// MARK: - EmptyStateViewDelegate
+protocol EmptyStateViewDelegate: class {
+	func emptyStateViewDidReceiveTap(_ view: EmptyStateView)
 }

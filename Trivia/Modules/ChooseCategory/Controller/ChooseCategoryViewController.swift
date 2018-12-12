@@ -25,6 +25,7 @@ final class ChooseCategoryViewController: BaseTableViewController {
 		componentsView.tableView.estimatedRowHeight = UITableView.automaticDimension
 		componentsView.tableView.reloadData()
 		componentsView.tableView.separatorColor = ColorPalette.Primary.separator
+		componentsView.emptyStateView.delegate = self
 		componentsView.state = BaseComponentsViewState.idle
 	}
 	
@@ -118,5 +119,12 @@ extension ChooseCategoryViewController: UITableViewDataSource {
 extension ChooseCategoryViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		viewModel.inputs.didSelectCategory(at: indexPath.row)
+	}
+}
+
+// MARK: - EmptyStateViewDelegate
+extension ChooseCategoryViewController: EmptyStateViewDelegate {
+	func emptyStateViewDidReceiveTap(_ view: EmptyStateView) {
+		viewModel.inputs.emptyStateViewTapped()
 	}
 }

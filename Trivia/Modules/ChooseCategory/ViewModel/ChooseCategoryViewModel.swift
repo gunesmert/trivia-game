@@ -59,7 +59,8 @@ final class DefaultChooseCategoryViewModel: ChooseCategoryViewModel {
 		self.error
 			.subscribe(
 				onNext: { [weak self] error in
-					self?.stateInput.onNext(BaseComponentsViewState.error(error.localizedDescription))
+					let message = error.localizedDescription + NSLocalizedString("\nTap to try again!", comment: "")
+					self?.stateInput.onNext(BaseComponentsViewState.error(message))
 				}
 			)
 			.disposed(by: disposeBag)
@@ -70,6 +71,7 @@ final class DefaultChooseCategoryViewModel: ChooseCategoryViewModel {
 protocol ChooseCategoryViewModelInputs {
 	func viewDidEndLoading()
 	func backButtonTapped()
+	func emptyStateViewTapped()
 	func didSelectCategory(at index: Int)
 }
 
@@ -83,6 +85,11 @@ extension DefaultChooseCategoryViewModel: ChooseCategoryViewModelInputs {
 	func backButtonTapped() {
 		let action = DefaultChooseCategoryViewModelDelegateAction.back
 		delegate?.viewModel(self, didTrigger: action)
+	}
+	
+	func emptyStateViewTapped() {
+		stateInput.onNext(BaseComponentsViewState.loading)
+		categoriesReloadInput.onNext(())
 	}
 	
 	func didSelectCategory(at index: Int) {
