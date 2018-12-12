@@ -3,7 +3,7 @@ import UIKit
 public struct ColorPalette {
 	public struct Primary {
 		public static let tint = UIColor.dolphin
-		public static let navigationBarButtonTint = UIColor.turkishRose
+		public static let navigationBarButtonTint = UIColor.mandysPink
 		public static let buttonBackground = UIColor.dolphin
 		public static let separator = UIColor.mandysPink
 		
@@ -15,6 +15,13 @@ public struct ColorPalette {
 		public struct Dark {
 			public static let text = UIColor.black
 		}
+	}
+	
+	public struct Answer {
+		public static let `default` = UIColor.dolphin
+		public static let selected = UIColor.matisse
+		public static let correct = UIColor.lightForestGreen
+		public static let incorrect = UIColor.alizarinCrimson
 	}
 }
 
@@ -57,5 +64,13 @@ private extension UIColor {
 	
 	static var matisse: UIColor {
 		return UIColor(hexString: "#355C7D")
+	}
+	
+	static var lightForestGreen: UIColor {
+		return UIColor(hexString: "#65A380")
+	}
+	
+	static var alizarinCrimson: UIColor {
+		return UIColor(hexString: "#DB2B30")
 	}
 }

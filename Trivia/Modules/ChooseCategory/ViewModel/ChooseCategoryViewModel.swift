@@ -37,7 +37,7 @@ final class DefaultChooseCategoryViewModel: ChooseCategoryViewModel {
 	init(with repository: Repository) {
 		self.repository = repository
 		
-		let fetchCategories = categoriesReloadInput.flatMap { bundle in
+		let fetchCategories = categoriesReloadInput.flatMap { _ in
 			repository
 				.fetchCategories()
 				.asObservable()

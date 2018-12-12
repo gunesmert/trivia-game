@@ -49,6 +49,13 @@
 		0DF4C74421C139FA007262ED /* NavigationBarButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C74321C139FA007262ED /* NavigationBarButtonExtensions.swift */; };
 		0DF4C74621C13A0D007262ED /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C74521C13A0D007262ED /* StringExtensions.swift */; };
 		0DF4C74821C13A2F007262ED /* NavigationBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C74721C13A2F007262ED /* NavigationBarButton.swift */; };
+		0DF4C74A21C14430007262ED /* QuestionsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C74921C14430007262ED /* QuestionsBundle.swift */; };
+		0DF4C74C21C144F4007262ED /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C74B21C144F4007262ED /* Question.swift */; };
+		0DF4C75321C14746007262ED /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75221C14746007262ED /* GameViewModel.swift */; };
+		0DF4C75521C14C69007262ED /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75421C14C69007262ED /* GameViewController.swift */; };
+		0DF4C75721C14D05007262ED /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75621C14D05007262ED /* GameView.swift */; };
+		0DF4C75921C1533F007262ED /* GameComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75821C1533F007262ED /* GameComponentsView.swift */; };
+		0DF4C75B21C15EC3007262ED /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF4C75A21C15EC3007262ED /* AnswerButton.swift */; };
 		4528CCD886B9EB36479B6A6E /* Pods_Trivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76DA8CA015C98202AA209A6C /* Pods_Trivia.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +104,13 @@
 		0DF4C74321C139FA007262ED /* NavigationBarButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarButtonExtensions.swift; sourceTree = "<group>"; };
 		0DF4C74521C13A0D007262ED /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		0DF4C74721C13A2F007262ED /* NavigationBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarButton.swift; sourceTree = "<group>"; };
+		0DF4C74921C14430007262ED /* QuestionsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsBundle.swift; sourceTree = "<group>"; };
+		0DF4C74B21C144F4007262ED /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		0DF4C75221C14746007262ED /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		0DF4C75421C14C69007262ED /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		0DF4C75621C14D05007262ED /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		0DF4C75821C1533F007262ED /* GameComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponentsView.swift; sourceTree = "<group>"; };
+		0DF4C75A21C15EC3007262ED /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
 		76DA8CA015C98202AA209A6C /* Pods_Trivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEB82918D141EDB2D2935CB /* Pods-Trivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.release.xcconfig"; sourceTree = "<group>"; };
 		A48A287CC69B313FBBCB5569 /* Pods-Trivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia/Pods-Trivia.debug.xcconfig"; sourceTree = "<group>"; };
@@ -197,8 +211,8 @@
 		0DF4C6D121C10973007262ED /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				0DF4C6B821C10619007262ED /* Info.plist */,
 				0DF4C72221C1268D007262ED /* Constants.swift */,
+				0DF4C6B821C10619007262ED /* Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -208,6 +222,7 @@
 			children = (
 				0DF4C70421C111DE007262ED /* Bundles */,
 				0DF4C70221C1115F007262ED /* Category.swift */,
+				0DF4C74B21C144F4007262ED /* Question.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,6 +232,7 @@
 			children = (
 				0DF4C6D721C10A62007262ED /* Base */,
 				0DF4C72621C12E79007262ED /* ChooseCategory */,
+				0DF4C74D21C146C7007262ED /* Game */,
 				0DF4C70C21C115F3007262ED /* Main */,
 				0DF4C6DE21C10C9A007262ED /* Root */,
 			);
@@ -330,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF4C70521C111EA007262ED /* CategoriesBundle.swift */,
+				0DF4C74921C14430007262ED /* QuestionsBundle.swift */,
 			);
 			path = Bundles;
 			sourceTree = "<group>";
@@ -339,11 +356,11 @@
 			children = (
 				0DF4C70821C11283007262ED /* JSONDecoderExtensions.swift */,
 				0DF4C72D21C13123007262ED /* MaterializedExtensions.swift */,
+				0DF4C74321C139FA007262ED /* NavigationBarButtonExtensions.swift */,
+				0DF4C74521C13A0D007262ED /* StringExtensions.swift */,
 				0DF4C72421C126BE007262ED /* UIDeviceExtensions.swift */,
 				0DF4C71521C11870007262ED /* UIViewControllerExtensions.swift */,
 				0DF4C70A21C1147A007262ED /* UIViewExtensions.swift */,
-				0DF4C74321C139FA007262ED /* NavigationBarButtonExtensions.swift */,
-				0DF4C74521C13A0D007262ED /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -404,9 +421,10 @@
 		0DF4C71F21C12638007262ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0DF4C72021C12644007262ED /* PrimaryButton.swift */,
+				0DF4C75A21C15EC3007262ED /* AnswerButton.swift */,
 				0DF4C73621C13259007262ED /* InsetLabel.swift */,
 				0DF4C74721C13A2F007262ED /* NavigationBarButton.swift */,
+				0DF4C72021C12644007262ED /* PrimaryButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -452,6 +470,41 @@
 				0DF4C73F21C1383A007262ED /* CategoryCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0DF4C74D21C146C7007262ED /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C74E21C14701007262ED /* Controller */,
+				0DF4C74F21C14711007262ED /* ViewModel */,
+				0DF4C75121C14727007262ED /* Views */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0DF4C74E21C14701007262ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C75421C14C69007262ED /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0DF4C74F21C14711007262ED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C75221C14746007262ED /* GameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0DF4C75121C14727007262ED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4C75821C1533F007262ED /* GameComponentsView.swift */,
+				0DF4C75621C14D05007262ED /* GameView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1CA55DF40398A043E3927199 /* Pods */ = {
@@ -600,12 +653,14 @@
 				0DF4C71821C119B3007262ED /* MainViewController.swift in Sources */,
 				0DF4C6F721C10F83007262ED /* APIClient.swift in Sources */,
 				0DF4C6D621C10A48007262ED /* Coordinator.swift in Sources */,
+				0DF4C75721C14D05007262ED /* GameView.swift in Sources */,
 				0DF4C6AD21C10618007262ED /* AppDelegate.swift in Sources */,
 				0DF4C70121C11139007262ED /* Repository.swift in Sources */,
 				0DF4C71A21C11A2F007262ED /* MainCoordinator.swift in Sources */,
 				0DF4C72121C12644007262ED /* PrimaryButton.swift in Sources */,
 				0DF4C6E421C10EB1007262ED /* RootViewController.swift in Sources */,
 				0DF4C6FD21C110B2007262ED /* APIAdapter.swift in Sources */,
+				0DF4C74A21C14430007262ED /* QuestionsBundle.swift in Sources */,
 				0DF4C70921C11283007262ED /* JSONDecoderExtensions.swift in Sources */,
 				0DF4C73D21C134CF007262ED /* StaticallyIdentifiable.swift in Sources */,
 				0DF4C73B21C13447007262ED /* ChooseCategoryViewController.swift in Sources */,
@@ -615,6 +670,7 @@
 				0DF4C73721C13259007262ED /* InsetLabel.swift in Sources */,
 				0DF4C6E221C10DCB007262ED /* RootCoordinator.swift in Sources */,
 				0DF4C6FF21C11120007262ED /* APIEndpoint.swift in Sources */,
+				0DF4C75521C14C69007262ED /* GameViewController.swift in Sources */,
 				0DF4C72521C126BE007262ED /* UIDeviceExtensions.swift in Sources */,
 				0DF4C6F521C10F68007262ED /* NetworkClient.swift in Sources */,
 				0DF4C73021C131C1007262ED /* BaseTableViewController.swift in Sources */,
@@ -627,7 +683,11 @@
 				0DF4C6D921C10A6F007262ED /* BaseViewController.swift in Sources */,
 				0DF4C74221C139DE007262ED /* NavigationBarProperties.swift in Sources */,
 				0DF4C6FB21C11096007262ED /* NetworkHelpers.swift in Sources */,
+				0DF4C75B21C15EC3007262ED /* AnswerButton.swift in Sources */,
+				0DF4C75921C1533F007262ED /* GameComponentsView.swift in Sources */,
+				0DF4C75321C14746007262ED /* GameViewModel.swift in Sources */,
 				0DF4C70B21C1147A007262ED /* UIViewExtensions.swift in Sources */,
+				0DF4C74C21C144F4007262ED /* Question.swift in Sources */,
 				0DF4C71C21C120CE007262ED /* MainView.swift in Sources */,
 				0DF4C6DD21C10B86007262ED /* ColorPalette.swift in Sources */,
 				0DF4C74421C139FA007262ED /* NavigationBarButtonExtensions.swift in Sources */,

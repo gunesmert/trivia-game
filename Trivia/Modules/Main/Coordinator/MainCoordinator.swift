@@ -29,8 +29,12 @@ final class MainCoordinator: Coordinator {
 		navigationController.pushViewController(controller, animated: true)
 	}
 	
-	private func startGame(with category: Category) {
-		
+	private func startGame(with category: Category? = nil) {
+		guard let navigationController = viewController as? BaseNavigationController else { return }
+		let viewModel = DefaultGameViewModel(with: repository, and: category)
+		viewModel.delegate = self
+		let controller = GameViewController(viewModel: viewModel)
+		navigationController.pushViewController(controller, animated: true)
 	}
 }
 
@@ -41,7 +45,7 @@ extension MainCoordinator: DefaultMainViewModelDelegate {
 		case .didSelectChooseCategory:
 			displayChooseCategory()
 		case .didSelectPlayWithRandomQuestions:
-			break
+			startGame()
 		case .didSelectCategory(let category):
 			startGame(with: category)
 		}
@@ -58,6 +62,18 @@ extension MainCoordinator: DefaultChooseCategoryViewModelDelegate {
 			navigationController.popViewController(animated: true)
 		case .didSelectCategory(let category):
 			startGame(with: category)
+		}
+	}
+}
+
+// MARK: - DefaultGameViewModelDelegate
+extension MainCoordinator: DefaultGameViewModelDelegate {
+	func viewModel(_ viewModel: DefaultGameViewModel, didTrigger action: DefaultGameViewModelDelegateAction) {
+		switch action {
+		case .gameEnded:
+			guard let navigationController = viewController as? BaseNavigationController else { return }
+			navigationController.popToRootViewController(animated: true)
+			// TODO: Update Main View Model for last played category
 		}
 	}
 }

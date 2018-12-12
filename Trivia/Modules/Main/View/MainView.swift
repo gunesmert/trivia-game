@@ -12,12 +12,6 @@ final class MainView: UIView {
 		return view
 	}()
 	
-	private lazy var actionsHolderView: UIView = {
-		let view = UIView()
-		view.backgroundColor = ColorPalette.Primary.Light.background
-		return view
-	}()
-	
 	private lazy var actionsStackView: UIStackView = {
 		let stackView = UIStackView()
 		stackView.distribution = UIStackView.Distribution.fillEqually
